@@ -29,13 +29,28 @@ body.landing {
  .selling-points {
      position: relative;
  }
+.selling-points:hover{
 
+}
  .point {
-     position: relative;
-     padding: 2rem;
-     text-align: center;
+   position: relative;
+   padding: 2rem;
+   text-align: center;
+   -webkit-transition: all .5s ease-in-out;
+   -moz-transition: all .5s ease-in-out;
+   transition: all .5s ease-in-out;
  }
-
+ .point:hover {
+   -webkit-transition-delay: .02s;
+   -moz-transition-delay: .02s;
+   transition-delay: .02s;
+   position: relative;
+   padding: 2rem;
+   text-align: center;
+   -webkit-transform: scaleX(1.2) scaleY(1.2);
+   -moz-transform: scaleX(1.2) scaleY(1.2);
+   transform: scaleX(1.2) scaleY(1.2);
+ }
  .point .point-title {
      font-size: 1.25rem;
  }
