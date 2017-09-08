@@ -1,10 +1,5 @@
-function start(){
-
-  var points = document.getElementsByClassName('point');
-
-  function callback(val){
-    console.log('this is num ' + val);
+function forEach(array, callback){
+  for(var i = 0; i < array.length; i++){
+    callback(array[i]);
   }
-
-  forEach(points, callback);
 }
