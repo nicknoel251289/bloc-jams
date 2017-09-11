@@ -1,5 +1,11 @@
 var pointsArray = document.getElementsByClassName('point');
 
+function forEach(array, callback){
+  for(var i = 0; i < array.length; i++){
+    callback(array[i]);
+  }
+}
+
 var revealPoint = function(point) {
         point.style.opacity = 1;
         point.style.transform = "scaleX(1) translateX(0)";
