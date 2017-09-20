@@ -52,7 +52,23 @@ var createSongRow = function(songNumber, songName, songLength) {
      + '</tr>'
      ;
 
-    return $(template);
+    var $row = $(template);
+
+    var clickHandler = function() {
+         // clickHandler logic
+    };
+    var onHover = function(event) {
+         // Placeholder for function logic
+    };
+    var offHover = function(event) {
+         // Placeholder for function logic
+    };
+
+    $row.find('.song-item-number').click(clickHandler);
+
+    $row.hover(onHover, offHover);
+
+    return $row;
 };
 
 var setCurrentAlbum = function(album) {
@@ -76,7 +92,7 @@ var setCurrentAlbum = function(album) {
 
 };
 
-var findParentByClassName = function(elem, findParentName) {
+/*var findParentByClassName = function(elem, findParentName) {
   var node = document.querySelector('.'+ findParentName);
 
   if (elem === null || node === null) {
@@ -126,44 +142,15 @@ var clickHandler = function(targetElement) {
           currentlyPlayingSong = songItem.getAttribute('data-song-number');
     }
 
- };
+ };*/
 
-var songListContainer = document.getElementsByClassName('album-view-song-list')[0];
-var songRows = document.getElementsByClassName('album-view-song-item');
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>';
+
 var currentlyPlayingSong = null;
 
-window.onload = function() {
+ $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
-
-    songListContainer.addEventListener('mouseover', function(event) {
-      if (event.target.parentElement.className === 'album-view-song-item') {
-        event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
-            var songItem = getSongItem(event.target);
-
-            if (songItem.getAttribute('data-song-number') !== currentlyPlayingSong) {
-                songItem.innerHTML = playButtonTemplate;
-            }
-         }
-    });
-
-    for (var i = 0; i < songRows.length; i++) {
-         songRows[i].addEventListener('mouseleave', function(event) {
-
-            var songItem = getSongItem(event.target);
-            var songItemNumber = songItem.getAttribute('data-song-number');
-
-            // #2
-            if (songItemNumber !== currentlyPlayingSong) {
-                songItem.innerHTML = songItemNumber;
-            }
-         });
-
-         songRows[i].addEventListener('click', function(event) {
-             clickHandler(event.target);
-         });
-     }
 
      var albums = [albumPicasso, albumMarconi, albumAvicii];
      var index = 1;
@@ -183,4 +170,4 @@ window.onload = function() {
         index = 0;
       }
   });
-};
+});
