@@ -314,6 +314,28 @@ var currentVolume = 80;
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
 
+var findParentByClassName = function(element, className) {
+    if (element) {
+        var currentParent = element.parentElement;
+        if (currentParent == null) {
+            console.log("No parent found");
+            return null;
+        }
+
+        while (currentParent != null && currentParent.className !== className && currentParent.className !== null) {
+            currentParent = currentParent.parentElement;
+        }
+
+        if (currentParent == null || currentParent.className != className) {
+            console.log("No parent found with that class name");
+        }
+
+        return currentParent;
+    }
+}
+
+findParentByClassName('nav', 'navbar'); //Odd, it returns 'no parent found'
+
 $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
     setupSeekBars();
